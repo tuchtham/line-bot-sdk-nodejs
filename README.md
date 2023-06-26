@@ -1,64 +1,102 @@
-# LINE Messaging API SDK for nodejs
+# LINE Echo Bot with TypeScript
 
-[![Github Action](https://github.com/line/line-bot-sdk-nodejs/actions/workflows/test.yml/badge.svg)](https://github.com/line/line-bot-sdk-nodejs/actions/workflows/test.yml)
-[![npmjs](https://badge.fury.io/js/%40line%2Fbot-sdk.svg)](https://www.npmjs.com/package/@line/bot-sdk)
+An example LINE bot to echo message with TypeScript. The bot is coded according to TypeScript's best practices.
 
+## Prerequisite
 
-## Introduction
-The LINE Messaging API SDK for nodejs makes it easy to develop bots using LINE Messaging API, and you can create a sample bot within minutes.
-
-## Documentation
-
-See the official API documentation for more information
-
-- English: https://developers.line.biz/en/docs/messaging-api/overview/
-- Japanese: https://developers.line.biz/ja/docs/messaging-api/overview/
-
-line-bot-sdk-nodejs documentation: https://line.github.io/line-bot-sdk-nodejs/#getting-started
-
-## Requirements
-
-* **Node.js** 10 or higher
+- Git
+- Node.js version 10 and up
+- Heroku CLI (optional)
+- LINE Developers Account for the bot
 
 ## Installation
 
-Using [npm](https://www.npmjs.com/):
+- Clone the repository.
 
-``` bash
-$ npm install @line/bot-sdk --save
+```bash
+git clone https://github.com/line/line-bot-sdk-nodejs.git
 ```
 
-## Help and media
-FAQ: https://developers.line.biz/en/faq/
+- Change directory to the example.
 
-Community Q&A: https://www.line-community.me/questions
-
-News: https://developers.line.biz/en/news/
-
-Twitter: @LINE_DEV 
-
-## Versioning
-This project respects semantic versioning
-
-See http://semver.org/
-
-## Contributing
-
-Please check [CONTRIBUTING](CONTRIBUTING.md) before making a contribution.
-
-## License
+```bash
+cd line-bot-sdk-nodejs/examples/echo-bot-ts
 ```
-Copyright (C) 2016 LINE Corp.
- 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
- 
-   http://www.apache.org/licenses/LICENSE-2.0
- 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+
+- Install all dependencies.
+
+```bash
+npm install
 ```
+
+- Configure all of the environment variables.
+
+```bash
+export CHANNEL_ACCESS_TOKEN=<YOUR_CHANNEL_ACCESS_TOKEN>
+export CHANNEL_SECRET=<YOUR_CHANNEL_SECRET>
+export PORT=<YOUR_PORT>
+```
+
+- Setup your webhook URL in your LINE Official Account to be in the following format. Don't forget to disable the greeting messages and auto-response messages for convenience.
+
+```bash
+https://example-url.com/webhook
+```
+
+- Compile the TypeScript files.
+
+```bash
+npm run build
+```
+
+- Run the application.
+
+```bash
+npm start
+```
+
+## Alternative Installation
+
+If you want to deploy it via Heroku, it is also possible and is even easier for testing purposes.
+
+- Clone the repository.
+
+```bash
+git clone https://github.com/line/line-bot-sdk-nodejs.git
+```
+
+- Change directory to the example.
+
+```bash
+cd line-bot-sdk-nodejs/examples/echo-bot-ts
+```
+
+- Create a Heroku application.
+
+```bash
+git init
+heroku create <YOUR_APP_NAME> # Do not specify for a random name
+```
+
+- Setup the environment variables, and don't forget to setup your webhook URL (from the Heroku application that you have just created) in your LINE Offical Account. The webhook URL will still accept the following format: `https://example-url.com.herokuapp.com/webhook`.
+
+```bash
+heroku config:set CHANNEL_ACCESS_TOKEN=YOUR_CHANNEL_ACCESS_TOKEN
+heroku config:set CHANNEL_SECRET=YOUR_CHANNEL_SECRET
+```
+
+- Push the application to the server.
+
+```bash
+git add .
+git commit -m "Initial commit for Heroku testing"
+git push heroku master
+```
+
+- Open your application.
+
+```bash
+heroku open
+```
+
+- Done!
