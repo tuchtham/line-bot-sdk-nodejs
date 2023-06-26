@@ -2,10 +2,13 @@
 import { ClientConfig, Client, middleware, MiddlewareConfig, WebhookEvent, TextMessage, MessageAPIResponseBase } from '@line/bot-sdk';
 import express, { Application, Request, Response } from 'express';
 
+console.log("token " + process.env.CHANNEL_ACCESS_TOKEN);
+console.log("secret " + process.env.CHANNEL_SECRET);
+
 // Setup all LINE client and Express configurations.
 const clientConfig: ClientConfig = {
   channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN || '',
-  channelSecret: process.env.CHANNEL_SECRET,
+  channelSecret: process.env.CHANNEL_SECRET || '',
 };
 
 const middlewareConfig: MiddlewareConfig = {
